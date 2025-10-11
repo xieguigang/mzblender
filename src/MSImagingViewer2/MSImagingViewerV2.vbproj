@@ -340,6 +340,18 @@
     <None Include="Resources\perpendicular-mathematical-symbol.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\Erica\src\SingleCell\SingleExpression\SingleExpression.vbproj">
+      <Project>{86f6e896-a9b6-77cf-bde6-8227d9800451}</Project>
+      <Name>SingleExpression</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\Erica\src\STImaging\STImaging.vbproj">
+      <Project>{b2206ab5-7cd3-3629-d1b2-08000469504d}</Project>
+      <Name>STImaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\Erica\src\STRaid\STRaid.vbproj">
+      <Project>{08598397-f273-6ab5-922d-00a815e0b3d7}</Project>
+      <Name>STRaid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\galaxy\src\GalaxyChartLibs\GalaxyChartLibs.vbproj">
       <Project>{e7535428-57d4-4e45-8c54-1900c279c353}</Project>
       <Name>GalaxyChartLibs</Name>
@@ -360,9 +372,49 @@
       <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
       <Name>Microsoft.Windows.FeatureAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data\BinaryData\BinaryData\binarydata-netcore5.vbproj">
+      <Project>{55602d86-9c39-5322-1a2e-55d07e342d75}</Project>
+      <Name>binarydata-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data\BinaryData\HDSPack\HDSPack.vbproj">
+      <Project>{369e572c-979b-414a-db87-137c3b15c39e}</Project>
+      <Name>HDSPack</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data\BinaryData\msgpack\msgpack-netcore5.vbproj">
+      <Project>{bd21c3c5-25f7-a0a2-5537-35e31272b4d7}</Project>
+      <Name>msgpack-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data\BinaryData\netCDF\netCDF.vbproj">
+      <Project>{19c32dd8-3a76-0b22-a6e8-7f38dac2b9c9}</Project>
+      <Name>netCDF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj">
+      <Project>{de357ce4-1805-706a-f218-c257cd7a4fd9}</Project>
+      <Name>dataframework-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\DataMining\BinaryTree\btree-netcore5.vbproj">
+      <Project>{3796de89-5210-3fdc-376c-e8a3ad303f34}</Project>
+      <Name>btree-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\DataMining\DataMining\DataMining.NET5.vbproj">
+      <Project>{327cebd7-ea57-57b8-ed45-b754f582fbee}</Project>
+      <Name>DataMining.NET5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\DataMining\DensityQuery\DensityQuery.NET5.vbproj">
+      <Project>{05cbc7fb-dc72-56ba-c97c-afc5e3b6e50c}</Project>
+      <Name>DensityQuery.NET5</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Graph\graph-netcore5.vbproj">
       <Project>{90328951-1523-8942-19d6-33d878501c24}</Project>
       <Name>graph-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\DataFrame\dataframeUtils-netcore5.vbproj">
+      <Project>{e810d9b9-17e7-819f-c2cd-f9c4eb19268e}</Project>
+      <Name>dataframeUtils-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math.Statistics\stats-netcore5.vbproj">
+      <Project>{c67068c4-8db7-8165-f01a-7842c76e96e3}</Project>
+      <Name>stats-netcore5</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj">
       <Project>{96fd2c0f-5615-172c-a024-4a4418d9ed6d}</Project>
@@ -384,13 +436,29 @@
       <Project>{e4c43df2-562d-b1a9-9db2-9bb9e68d173e}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25json\JSON-netcore5.vbproj">
+      <Project>{20f7e741-cb25-6cf0-01ba-7a011a679e7d}</Project>
+      <Name>JSON-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25vnd.openxmlformats-officedocument.spreadsheetml.sheet\Excel\xlsx-netcore5.vbproj">
+      <Project>{e3cb179c-3e00-a2ff-24c2-5f8e6099d325}</Project>
+      <Name>xlsx-netcore5</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\text%25html\html_netcore5.vbproj">
       <Project>{f8610b43-4e67-813d-4a5a-2291971a2a43}</Project>
       <Name>html_netcore5</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\assembly\assembly\assembly-netcore5.vbproj">
+      <Project>{92a7e3f8-2515-9a19-6761-e9a61c0e7273}</Project>
+      <Name>assembly-netcore5</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\mzmath\ms2_math-core\mzmath-netcore5.vbproj">
       <Project>{f332a0c4-b377-1d62-e5f9-b914155ffecc}</Project>
       <Name>mzmath-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\mzmath\SingleCells\SingleCells.vbproj">
+      <Project>{4f305cba-b093-c2c9-6836-1a164d206068}</Project>
+      <Name>SingleCells</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\mzmath\SpatialMath\SpatialMath.vbproj">
       <Project>{a20afe96-b600-982f-fd5c-dff3046778df}</Project>
