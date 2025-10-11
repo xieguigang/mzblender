@@ -93,6 +93,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\R-sharp\R#\Rsharp-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\Darwinism\src\computing\IPCDriver\IPCDriver.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\httpd\src\Flute\Flute.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\httpd\src\WebCloud\Flute.SessionManager\Flute.SessionManager.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj" />

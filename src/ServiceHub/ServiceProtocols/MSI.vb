@@ -76,7 +76,6 @@
 
 Imports System.Drawing
 Imports System.IO
-Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.Comprehensive
@@ -94,9 +93,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology.HEMap
 Imports BioNovoGene.Analytical.MassSpectrometry.SingleCells.Deconvolute
 Imports Darwinism.HPC.Parallel
 Imports Darwinism.IPC.Networking.Protocols.Reflection
-Imports Darwinism.IPC.Networking.Tcp
 Imports Microsoft.VisualBasic.CommandLine.InteropService.Pipeline
-Imports Microsoft.VisualBasic.ComponentModel
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Unit
@@ -109,7 +106,6 @@ Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.MIME.application.json
 Imports Microsoft.VisualBasic.MIME.application.json.Javascript
 Imports Microsoft.VisualBasic.MIME.Html.CSS
-Imports Microsoft.VisualBasic.Net.Tcp
 Imports Microsoft.VisualBasic.Parallel
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
@@ -117,11 +113,10 @@ Imports PixelData = BioNovoGene.Analytical.MassSpectrometry.MsImaging.PixelData
 Imports std = System.Math
 
 <Protocol(GetType(ServiceProtocol))>
-Public Class MSI : Implements ITaskDriver, IDisposable
+Public Class MSI : Implements IDisposable
 
     Public Shared ReadOnly Property Protocol As Long = New ProtocolAttribute(GetType(ServiceProtocol)).EntryPoint
 
-    Dim socket As TcpServicesSocket
     Dim redis As MemoryPipe
 
     Friend type As FileApplicationClass
@@ -140,30 +135,9 @@ Public Class MSI : Implements ITaskDriver, IDisposable
 
     Private disposedValue As Boolean
 
-    Public ReadOnly Property TcpPort As Integer
-        Get
-            Return socket.LocalPort
-        End Get
-    End Property
-
-    Sub New(Optional debugPort As Integer? = Nothing, Optional masterPid As String = Nothing)
-        Dim port As Integer = If(debugPort Is Nothing, GetFirstAvailablePort(), debugPort)
-        Dim callback As DataRequestHandler = AddressOf New ProtocolHandler(Me, debug:=Not debugPort Is Nothing).HandleRequest
-
-        Me.socket = New TcpServicesSocket(port, debug:=Not debugPort Is Nothing) With {
-            .KeepsAlive = False,
-            .ResponseHandler = callback
-        }
+    Sub New(TcpPort As String)
         Me.redis = New MemoryPipe(MapObject.Allocate(128 * ByteSize.MB, hMemP:=$"MSI_redis_{TcpPort}"))
-
-        Call RunSlavePipeline.SendMessage($"socket={TcpPort}")
-        Call BackgroundTaskUtils.BindToMaster(masterPid, Me)
     End Sub
-
-    <MethodImpl(MethodImplOptions.AggressiveInlining)>
-    Public Function Run() As Integer Implements ITaskDriver.Run
-        Return socket.Run
-    End Function
 
     ''' <summary>
     ''' just pass a degree angle, apply the matrix rotation at here
@@ -858,7 +832,6 @@ Public Class MSI : Implements ITaskDriver, IDisposable
 
     <Protocol(ServiceProtocol.ExitApp)>
     Public Function Quit(request As RequestStream, remoteAddress As System.Net.IPEndPoint) As BufferPipe
-        Call socket.Dispose()
         Return New DataPipe(Encoding.UTF8.GetBytes("OK!"))
     End Function
 
@@ -1000,7 +973,7 @@ Public Class MSI : Implements ITaskDriver, IDisposable
         If Not disposedValue Then
             If disposing Then
                 ' TODO: dispose managed state (managed objects)
-                Call socket.Dispose()
+
             End If
 
             ' TODO: free unmanaged resources (unmanaged objects) and override finalizer

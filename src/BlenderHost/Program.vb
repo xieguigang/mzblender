@@ -63,6 +63,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.Comprehensive.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.Math.Ms1
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging
 Imports Darwinism.HPC.Parallel
+Imports Darwinism.IPC.Driver
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.Pipeline
 Imports Microsoft.VisualBasic.CommandLine.Reflection
@@ -94,15 +95,17 @@ Public Module Program
         Dim port As Integer = args <= "--port"
         Dim master As Integer = Val(CStr(args <= "--master"))
         Dim is_debug As Boolean = args("--debug")
-        Dim localhost As New MSI(port, masterPid:=If(is_debug, "debug-blender", master))
+        Dim masterPid As String = If(is_debug, "debug-blender", master)
+        Dim app As New MSI(port)
+        Dim localhost As New HttpDriver(app, port)
 
         If (Not is_debug) AndAlso master > 0 Then
-            Call BackgroundTaskUtils.BindToMaster(parentId:=master, kill:=localhost)
+            Call BackgroundTaskUtils.BindToMaster(parentId:=master, kill:=app)
         End If
 
         Call RunSlavePipeline.SendMessage($"start blender host listen at port={port}!")
 
-        Return localhost.Run
+        Return app.Run
     End Function
 
     <ExportAPI("/ST-imaging")>
