@@ -1,4 +1,4 @@
-﻿Imports CommonDialogs
+﻿Imports Galaxy.CommonControls.ThemeColorPicker
 Imports Galaxy.Workbench.CommonDialogs
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
@@ -26,7 +26,7 @@ Partial Class InputSpotColor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InputSpotColor))
-        Me.ThemeColorPicker1 = New System.Windows.Forms.ThemeColorPicker()
+        Me.ThemeColorPicker1 = New ThemeColorPicker()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()

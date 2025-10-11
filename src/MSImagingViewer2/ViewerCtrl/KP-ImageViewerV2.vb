@@ -2,10 +2,10 @@
 Imports System.IO
 Imports System.Reflection
 Imports System.Runtime.InteropServices
+Imports Galaxy.Workbench
+Imports Galaxy.Workbench.CommonDialogs
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
-Imports Mzkit_win32.BasicMDIForm
-Imports Galaxy.Workbench.CommonDialogs
 
 Partial Public Class KpImageViewer : Inherits UserControl
 
@@ -1120,7 +1120,7 @@ Partial Public Class KpImageViewer : Inherits UserControl
     Private Shared Sub InitializeRange(ByRef rangeValue As Double())
         If rangeValue.IsNullOrEmpty Then
             rangeValue = {0, 255}
-        ElseIf RangeValue.Length = 1 Then
+        ElseIf rangeValue.Length = 1 Then
             rangeValue = {0, rangeValue(0)}
         End If
     End Sub
@@ -1141,7 +1141,7 @@ Partial Public Class KpImageViewer : Inherits UserControl
 
         If rawRange.Length = 0 Then
             ' [0,0]
-            Call Workbench.Warning("no intensity range data could be found, load imaging data at first!")
+            Call CommonRuntime.Warning("no intensity range data could be found, load imaging data at first!")
             Return
         End If
 

@@ -1,4 +1,5 @@
 ﻿Imports System.Drawing
+Imports Galaxy.CommonControls.ThemeColorPicker
 
 Public Class InputSpotColor
 
