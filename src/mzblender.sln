@@ -163,6 +163,14 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MSEngine", "..\..\..\mzmath
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MSFinder", "..\..\..\mzmath\MSFinder\MSFinder.vbproj", "{0DB4DA8C-1555-95E3-18DB-F62D56F0402A}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MachineLearning.Data.Extensions", "..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\MachineLearning\MachineLearning.Data.Extensions\MachineLearning.Data.Extensions.vbproj", "{177BB85A-C201-CFB0-BAAC-F380E290EC71}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "machine_learning-netcore5", "..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\MachineLearning\MachineLearning\machine_learning-netcore5.vbproj", "{62B96683-63AB-7576-785F-5A79E894EFD4}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DeepLearning.NET6", "..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\MachineLearning\DeepLearning\DeepLearning.NET6.vbproj", "{75A9251F-8252-81FD-9AD9-034C386BC907}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TensorFlow", "..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\MachineLearning\TensorFlow\TensorFlow.vbproj", "{EBEB7C5E-D865-F90E-87F0-497612BE17BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1013,6 +1021,54 @@ Global
 		{0DB4DA8C-1555-95E3-18DB-F62D56F0402A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0DB4DA8C-1555-95E3-18DB-F62D56F0402A}.Release|x64.ActiveCfg = Release|x64
 		{0DB4DA8C-1555-95E3-18DB-F62D56F0402A}.Release|x64.Build.0 = Release|x64
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.Debug|x64.ActiveCfg = Debug|x64
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.Debug|x64.Build.0 = Debug|x64
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.Release|x64.ActiveCfg = Release|x64
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71}.Release|x64.Build.0 = Release|x64
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.Debug|x64.ActiveCfg = Debug|x64
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.Debug|x64.Build.0 = Debug|x64
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.Release|x64.ActiveCfg = Release|x64
+		{62B96683-63AB-7576-785F-5A79E894EFD4}.Release|x64.Build.0 = Release|x64
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.Debug|x64.ActiveCfg = Debug|x64
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.Debug|x64.Build.0 = Debug|x64
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.Release|x64.ActiveCfg = Release|x64
+		{75A9251F-8252-81FD-9AD9-034C386BC907}.Release|x64.Build.0 = Release|x64
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.Debug|x64.ActiveCfg = Debug|x64
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.Debug|x64.Build.0 = Debug|x64
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.Release|x64.ActiveCfg = Release|x64
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1088,6 +1144,10 @@ Global
 		{83E0EA95-88B4-8ADB-672E-297CA47AD8FB} = {8A7DB3FF-772A-4CE8-9E40-257C76D0CD11}
 		{E4ED21F6-50EA-DDF0-4E86-C56A3920FE6C} = {8A7DB3FF-772A-4CE8-9E40-257C76D0CD11}
 		{0DB4DA8C-1555-95E3-18DB-F62D56F0402A} = {8A7DB3FF-772A-4CE8-9E40-257C76D0CD11}
+		{177BB85A-C201-CFB0-BAAC-F380E290EC71} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{62B96683-63AB-7576-785F-5A79E894EFD4} = {8F97F778-5B85-4DD2-B9F8-230AAD660001}
+		{75A9251F-8252-81FD-9AD9-034C386BC907} = {8F97F778-5B85-4DD2-B9F8-230AAD660001}
+		{EBEB7C5E-D865-F90E-87F0-497612BE17BA} = {8F97F778-5B85-4DD2-B9F8-230AAD660001}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34700023-0F69-4501-9B5E-67D2C0139FF7}

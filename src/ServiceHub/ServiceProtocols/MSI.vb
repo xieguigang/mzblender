@@ -1,76 +1,76 @@
 ﻿#Region "Microsoft.VisualBasic::c1db0cb174d2fdbd78fc880776d6df74, mzkit\services\ServiceHub\ServiceProtocols\MSI.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 948
-    '    Code Lines: 696 (73.42%)
-    ' Comment Lines: 100 (10.55%)
-    '    - Xml Docs: 60.00%
-    ' 
-    '   Blank Lines: 152 (16.03%)
-    '     File Size: 40.83 KB
+' Summaries:
 
 
-    ' Class MSI
-    ' 
-    '     Properties: Protocol, TcpPort
-    ' 
-    '     Constructor: (+1 Overloads) Sub New
-    ' 
-    '     Function: AutoLocation, CutBackground, DeleteRegion, (+2 Overloads) ExportMzPack, ExtractMultipleSampleRegions
-    '               ExtractRegionMs1Spectrum, ExtractRegionSample, ExtractSamplePixels, GetAllAnnotationNames, GetBPCIons
-    '               GetGeneLayers, GetIonColocalization, GetIonStatList, GetMSIDimensions, GetMSIInformationMetadata
-    '               GetMSILayers, GetPixel, GetPixelRectangle, Load, loadMzML
-    '               LoadSummaryLayer, Quit, RegionFilter, Run, SampleBootstrapping
-    '               (+2 Overloads) SetSpatial2D, SetSpatialMapping, TurnMirrors, TurnUpsideDown, Unload
-    ' 
-    '     Sub: (+2 Overloads) Dispose, ExportMzPack, LoadMSIMzPackCommon
-    '     Class ExpressionDataSampling
-    ' 
-    '         Constructor: (+1 Overloads) Sub New
-    ' 
-    '         Function: GetResult
-    ' 
-    '         Sub: Solve
-    ' 
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 948
+'    Code Lines: 696 (73.42%)
+' Comment Lines: 100 (10.55%)
+'    - Xml Docs: 60.00%
+' 
+'   Blank Lines: 152 (16.03%)
+'     File Size: 40.83 KB
+
+
+' Class MSI
+' 
+'     Properties: Protocol, TcpPort
+' 
+'     Constructor: (+1 Overloads) Sub New
+' 
+'     Function: AutoLocation, CutBackground, DeleteRegion, (+2 Overloads) ExportMzPack, ExtractMultipleSampleRegions
+'               ExtractRegionMs1Spectrum, ExtractRegionSample, ExtractSamplePixels, GetAllAnnotationNames, GetBPCIons
+'               GetGeneLayers, GetIonColocalization, GetIonStatList, GetMSIDimensions, GetMSIInformationMetadata
+'               GetMSILayers, GetPixel, GetPixelRectangle, Load, loadMzML
+'               LoadSummaryLayer, Quit, RegionFilter, Run, SampleBootstrapping
+'               (+2 Overloads) SetSpatial2D, SetSpatialMapping, TurnMirrors, TurnUpsideDown, Unload
+' 
+'     Sub: (+2 Overloads) Dispose, ExportMzPack, LoadMSIMzPackCommon
+'     Class ExpressionDataSampling
+' 
+'         Constructor: (+1 Overloads) Sub New
+' 
+'         Function: GetResult
+' 
+'         Sub: Solve
+' 
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -79,6 +79,7 @@ Imports System.IO
 Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly
+Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.Comprehensive
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.Comprehensive.MsImaging
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.imzML
 Imports BioNovoGene.Analytical.MassSpectrometry.Assembly.MarkupData.mzML
@@ -112,7 +113,6 @@ Imports Microsoft.VisualBasic.Net.Tcp
 Imports Microsoft.VisualBasic.Parallel
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
-Imports MZWorkPack
 Imports PixelData = BioNovoGene.Analytical.MassSpectrometry.MsImaging.PixelData
 Imports std = System.Math
 
