@@ -1,57 +1,57 @@
 ﻿#Region "Microsoft.VisualBasic::0678002e366af4f90b466ab834c74e5f, mzkit\services\BlenderHost\Program.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 119
-    '    Code Lines: 99 (83.19%)
-    ' Comment Lines: 1 (0.84%)
-    '    - Xml Docs: 0.00%
-    ' 
-    '   Blank Lines: 19 (15.97%)
-    '     File Size: 4.91 KB
+' Summaries:
 
 
-    ' Module Program
-    ' 
-    '     Constructor: (+1 Overloads) Sub New
-    '     Function: Main, RenderSTImagingTargets, StartService
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 119
+'    Code Lines: 99 (83.19%)
+' Comment Lines: 1 (0.84%)
+'    - Xml Docs: 0.00%
+' 
+'   Blank Lines: 19 (15.97%)
+'     File Size: 4.91 KB
+
+
+' Module Program
+' 
+'     Constructor: (+1 Overloads) Sub New
+'     Function: Main, RenderSTImagingTargets, StartService
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -74,6 +74,7 @@ Imports Microsoft.VisualBasic.My
 Imports Microsoft.VisualBasic.My.FrameworkInternal
 Imports mzblender
 Imports MZKitWin32.Blender.CommonLibs
+Imports ServiceHub
 Imports Image = System.Drawing.Image
 
 Public Module Program
@@ -93,7 +94,7 @@ Public Module Program
         Dim port As Integer = args <= "--port"
         Dim master As Integer = Val(CStr(args <= "--master"))
         Dim is_debug As Boolean = args("--debug")
-        Dim localhost As New Service(port, masterChannel:=If(is_debug, "debug-blender", master))
+        Dim localhost As New MSI(port, masterPid:=If(is_debug, "debug-blender", master))
 
         If (Not is_debug) AndAlso master > 0 Then
             Call BackgroundTaskUtils.BindToMaster(parentId:=master, kill:=localhost)
@@ -154,7 +155,7 @@ Public Module Program
                 Dim mz As Double = maps.TryGetValue(id, [default]:=-1)
 
                 If mz <= 0 Then
-                    Call $"Missing '{id}'!".Warning
+                    Call $"Missing '{id}'!".warning
                     Continue For
                 Else
                     Try
