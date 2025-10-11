@@ -101,6 +101,7 @@
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\R-sharp\R#\Rsharp-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\Darwinism\src\computing\Parallel\parallel-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\Darwinism\src\networking\networking.vbproj" />
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\httpd\src\Flute\Flute.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data\BinaryData\BinaryData\binarydata-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\MachineLearning\MachineLearning.Data.Extensions\MachineLearning.Data.Extensions.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
