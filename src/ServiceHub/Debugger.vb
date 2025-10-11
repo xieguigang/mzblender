@@ -76,7 +76,7 @@ Module Debugger
 
     <ExportAPI("load_session")>
     Public Function loadSession(raw As String) As ProtocolHandler
-        Dim app As New MSI()
+        Dim app As New MSI(Nothing)
         Dim caller As New ProtocolHandler(app, debug:=True)
 
         Call caller.HandleRequest(MSIRequest.LoadMSIRawdata(raw), debug_local)

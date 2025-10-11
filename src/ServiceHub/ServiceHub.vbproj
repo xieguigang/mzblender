@@ -99,6 +99,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\Erica\src\SingleCell\SingleExpression\SingleExpression.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\R-sharp\R#\Rsharp-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\Darwinism\src\computing\IPCDriver\IPCDriver.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\Darwinism\src\computing\Parallel\parallel-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\Darwinism\src\networking\networking.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\httpd\src\Flute\Flute.NET5.vbproj" />
