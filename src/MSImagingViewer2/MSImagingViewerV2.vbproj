@@ -103,6 +103,24 @@
     <RemoveIntegerChecks>true</RemoveIntegerChecks>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MEMI-Desktop|AnyCPU'">
+    <OutputPath>bin\MEMI-Desktop\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>Mzkit_win32.MSImagingViewerV2.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MEMI-Desktop|x64'">
+    <OutputPath>bin\x64\MEMI-Desktop\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>Mzkit_win32.MSImagingViewerV2.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
