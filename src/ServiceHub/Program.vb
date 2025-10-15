@@ -92,7 +92,7 @@ Module Program
 
         Select Case service.ToLower
             Case "ms-imaging"
-                Call New HttpDriver(New ProtocolHandler(New MSI(debugPort)), CInt(debugPort)).Run()
+                Call New TCPDriver(New ProtocolHandler(New MSI(debugPort)), CInt(debugPort)).Run()
             Case Else
 
         End Select
