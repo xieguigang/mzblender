@@ -93,6 +93,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology.HEMap
 Imports BioNovoGene.Analytical.MassSpectrometry.SingleCells.Deconvolute
 Imports Darwinism.HPC.Parallel
 Imports Darwinism.IPC.Networking.Protocols.Reflection
+Imports HEView
 Imports Microsoft.VisualBasic.CommandLine.InteropService.Pipeline
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
@@ -900,6 +901,73 @@ Public Class MSI : Implements IDisposable
         Dim byts As Byte() = PixelScanIntensity.GetBuffer(summary)
 
         Call RunSlavePipeline.SendMessage($"sizeof pixels data payload: {StringFormats.Lanudry(bytes:=byts.Length)}")
+
+        Return New ZipDataPipe(byts)
+    End Function
+
+    <Protocol(ServiceProtocol.ExportCellMatrix)>
+    Public Function ExportCellMatrix(request As RequestStream, remoteAddress As System.Net.IPEndPoint) As BufferPipe
+        Dim config As LayerLoader = BSON.Load(request.ChunkBuffer).CreateObject(Of LayerLoader)(decodeMetachar:=True)
+        Dim cells As CellScan()
+
+        If config.mz.IsNullOrEmpty Then
+            Dim summary As PixelScanIntensity() = MSI.pixelReader _
+                .GetSummary _
+                .GetLayer(IntensitySummary.BasePeak) _
+                .ToArray
+
+            cells = summary _
+                .Select(Function(a)
+                            Return New CellScan With {
+                                .x = a.x,
+                                .y = a.y,
+                                .physical_x = a.x,
+                                .physical_y = a.y,
+                                .area = 1,
+                                .average_dist = 1,
+                                .density = 1,
+                                .points = 1,
+                                .r1 = 1,
+                                .r2 = 1,
+                                .ratio = 1,
+                                .theta = 0,
+                                .tile_id = "BPC",
+                                .weight = a.totalIon
+                            }
+                        End Function) _
+                .ToArray
+        Else
+            Dim mzdiff As Tolerance = config.GetTolerance
+
+            Call RunSlavePipeline.SendMessage($"configuration for load ion layers: {JsonContract.GetJson(config)}")
+
+            For Each mzi As Double In config.mz
+                Call Console.WriteLine($"{mzi}: {mzdiff(mzi, mzi + 0.001)}")
+            Next
+
+            cells = MSI.LoadPixels(config.mz, mzdiff) _
+                .Select(Function(a)
+                            Return New CellScan With {
+                                .weight = a.intensity,
+                                .r1 = 1,
+                                .r2 = 1,
+                                .x = a.x,
+                                .y = a.y,
+                                .physical_x = a.x,
+                                .physical_y = a.y,
+                                .area = 1,
+                                .average_dist = 1,
+                                .density = 1,
+                                .points = 1,
+                                .ratio = 1,
+                                .theta = 0,
+                                .tile_id = a.mz.ToString("F4")
+                            }
+                        End Function) _
+                .ToArray
+        End If
+
+        Dim byts As Byte() = BSON.SafeGetBuffer(cells.CreateJSONElement).ToArray
 
         Return New ZipDataPipe(byts)
     End Function

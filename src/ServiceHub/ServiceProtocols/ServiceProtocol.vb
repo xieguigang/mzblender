@@ -113,6 +113,8 @@ Public Enum ServiceProtocol
     AutoLocation
     DeleteRegion
 
+    ExportCellMatrix
+
     ''' <summary>
     ''' Extract the data samples for run the downstream data analsyis via the single cell bootstrapping method.
     ''' </summary>
