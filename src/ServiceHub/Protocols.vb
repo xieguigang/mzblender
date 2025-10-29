@@ -125,6 +125,7 @@ Public Module Protocols
                 End Sub
 
             Call pipeline.Start()
+            Call workstudio.
 
             For i As Integer = 0 To 1000
                 service = tcpPort
