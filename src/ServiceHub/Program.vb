@@ -88,11 +88,11 @@ Module Program
     <ExportAPI("run")>
     Public Sub Main(Optional service As String = "MS-Imaging",
                     Optional debugPort As Integer? = Nothing,
-                    Optional masetrPID As String = Nothing)
+                    Optional masterPID As String = Nothing)
 
         Select Case service.ToLower
             Case "ms-imaging"
-                Call New TCPDriver(New ProtocolHandler(New MSI(debugPort)), CInt(debugPort)).Run()
+                Call New TCPDriver(New ProtocolHandler(New MSI(If(debugPort, App.PID))), debugPort, masterPID).Run()
             Case Else
 
         End Select
