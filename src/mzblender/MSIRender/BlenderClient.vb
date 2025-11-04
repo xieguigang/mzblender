@@ -71,6 +71,7 @@ Imports Darwinism.IPC.Networking.Protocols
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Unit
 Imports Microsoft.VisualBasic.Data.IO
+Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.Net
 Imports Microsoft.VisualBasic.Parallel
 Imports Microsoft.VisualBasic.Serialization.JSON
