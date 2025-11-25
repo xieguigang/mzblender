@@ -8,13 +8,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mzkit_win32.MSImagingViewerV2</RootNamespace>
     <AssemblyName>Mzkit_win32.MSImagingViewerV2</AssemblyName>
+    
     <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <FileAlignment>512</FileAlignment>
-
     <UseWindowsForms>true</UseWindowsForms>
     <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32;MEMI-Desktop</Configurations>
     <Platforms>AnyCPU;ARM32;x64</Platforms>
-   
+    <UseWPF>True</UseWPF>
+    
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
