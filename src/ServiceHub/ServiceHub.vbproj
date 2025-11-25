@@ -4,11 +4,12 @@
     <RootNamespace>ServiceHub</RootNamespace>
     <TargetFrameworks>net8.0-windows;net48</TargetFrameworks>
     <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32;MEMI-Desktop</Configurations>
+    <Platforms>AnyCPU;ARM32;x64</Platforms>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Platforms>AnyCPU;ARM32;x64</Platforms>
+    
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='mzkit_win32|net8.0-windows|x64'">
@@ -23,71 +24,13 @@
     <OutputPath>../../../../../dist\bin\Rstudio\host\</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='MEMI-Desktop|net6.0|AnyCPU'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)|$(TargetFramework)' == 'mzkit_win32|net8.0-windows' ">
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
   
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Rsharp_app_release|net6.0|AnyCPU'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
+
   
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='mzkit_win32|net6.0|AnyCPU'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-    <RemoveIntegerChecks>true</RemoveIntegerChecks>
-    <Optimize>false</Optimize>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <DefineDebug>false</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|ARM32'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|ARM32'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='MEMI-Desktop|net6.0|ARM32'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Rsharp_app_release|net6.0|ARM32'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='mzkit_win32|net6.0|ARM32'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|x64'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|x64'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='MEMI-Desktop|net6.0|x64'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Rsharp_app_release|net6.0|x64'">
-    <DocumentationFile>ServiceHub.xml</DocumentationFile>
-  </PropertyGroup>
   
   <ItemGroup>
     <Compile Remove="logs\**" />
