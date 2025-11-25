@@ -49,6 +49,7 @@
     <ImportedNamespaces>System.Windows.Forms=False,System.Xml=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,MSImagingViewerV2=True</ImportedNamespaces>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\Erica\src\STImaging\STImaging.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\galaxy\src\GalaxyWorkbench\GalaxyWorkbench.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Drawing-net4.8\Drawing-net4.8.vbproj" />
