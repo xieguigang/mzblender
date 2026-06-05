@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <RootNamespace>BlenderHost</RootNamespace>
-    <TargetFrameworks>net8.0-windows</TargetFrameworks>    
+    <TargetFrameworks>net10.0-windows</TargetFrameworks>    
     <Platforms>AnyCPU;x64</Platforms>
     <Configurations>Debug;Release;mzkit_win32;MEMI-Desktop</Configurations>
     <UseApplicationFramework>True</UseApplicationFramework>
