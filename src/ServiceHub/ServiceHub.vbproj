@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <RootNamespace>ServiceHub</RootNamespace>
-    <TargetFrameworks>net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net10.0-windows</TargetFrameworks>
     <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32;MEMI-Desktop</Configurations>
     <Platforms>AnyCPU;ARM32;x64</Platforms>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
