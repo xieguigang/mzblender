@@ -188,7 +188,7 @@ Public Class KP_DrawObject
                     Call setImageValue(value)
                 End If
             Catch ex As Exception
-                Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+                MessageBox.Show("ImageViewer error: " & ex.ToString())
             End Try
         End Set
     End Property
@@ -363,14 +363,14 @@ Public Class KP_DrawObject
                 temp = New Bitmap(value)
             Catch
                 temp = Nothing
-                Windows.Forms.MessageBox.Show("ImageViewer error: Incorrect image format!")
+                MessageBox.Show("ImageViewer error: Incorrect image format!")
             End Try
 
             If temp IsNot Nothing Then
                 Call setImageFilePath(value, temp)
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -385,7 +385,7 @@ Public Class KP_DrawObject
 
             boundingRect = New Rectangle(0, 0, ImageWidth * zoomField, ImageHeight * zoomField)
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -423,7 +423,7 @@ Public Class KP_DrawObject
                 End If
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -449,7 +449,7 @@ Public Class KP_DrawObject
                 End If
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -475,7 +475,7 @@ Public Class KP_DrawObject
                 End If
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -488,7 +488,7 @@ Public Class KP_DrawObject
             multiBmp = Nothing
             gifBmp = Nothing
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -498,7 +498,7 @@ Public Class KP_DrawObject
             panelWidth = w
             panelHeight = h
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -508,7 +508,7 @@ Public Class KP_DrawObject
             previewPanelWidth = w
             previewPanelHeight = h
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -544,7 +544,7 @@ Public Class KP_DrawObject
                 bmpPreview = CreatePreviewImage()
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -580,7 +580,7 @@ Public Class KP_DrawObject
                 bmpPreview = CreatePreviewImage()
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -616,7 +616,7 @@ Public Class KP_DrawObject
                 bmpPreview = CreatePreviewImage()
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -770,7 +770,7 @@ Public Class KP_DrawObject
 
             AvoidOutOfScreen()
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -781,7 +781,7 @@ Public Class KP_DrawObject
 
             AvoidOutOfScreen()
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -815,7 +815,7 @@ Public Class KP_DrawObject
                 End If
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
             Return New Point(0, 0)
         End Try
     End Function
@@ -839,7 +839,7 @@ Public Class KP_DrawObject
 
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -861,7 +861,7 @@ Public Class KP_DrawObject
                 AvoidOutOfScreen()
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -876,11 +876,11 @@ Public Class KP_DrawObject
                 AvoidOutOfScreen()
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
-    Public Sub Scroll(sender As Object, e As Windows.Forms.MouseEventArgs)
+    Public Sub Scroll(sender As Object, e As MouseEventArgs)
         Try
             If Image IsNot Nothing Then
                 If e.Delta < 0 Then
@@ -890,7 +890,7 @@ Public Class KP_DrawObject
                 End If
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -917,7 +917,7 @@ Public Class KP_DrawObject
                 zoomField = boundingRect.Width / ImageWidth
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -949,7 +949,7 @@ Public Class KP_DrawObject
                 End If
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -989,7 +989,7 @@ Public Class KP_DrawObject
                 End If
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -1002,7 +1002,7 @@ Public Class KP_DrawObject
                 dragging = True
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -1012,7 +1012,7 @@ Public Class KP_DrawObject
                 dragging = False
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -1039,7 +1039,7 @@ Public Class KP_DrawObject
                 End If
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 End Class
