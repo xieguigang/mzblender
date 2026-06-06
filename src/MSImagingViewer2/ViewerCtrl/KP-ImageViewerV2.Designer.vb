@@ -271,7 +271,7 @@ Partial Class KpImageViewer
     ''' <summary>
     ''' 鸟瞰图
     ''' </summary>
-    Private WithEvents pbPanelAirscape As Windows.Forms.PictureBox
+    Private WithEvents pbPanelAirscape As PictureBox
     Private WithEvents pbFull As PanelDoubleBuffered
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents ToolStripLabel1 As ToolStripLabel
