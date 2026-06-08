@@ -112,7 +112,7 @@ Public Class PixelSelector
     Private ismouseDown As Boolean = False
     Private algorithmIndex As Integer = 1
 
-    Public Property HEMap As Bitmap
+    Public Property HEMap As System.Drawing.Bitmap
     Public Property ViewerHost As KpImageViewer
     Public Property EditorConfigs As PolygonEditorConfigs = PolygonEditorConfigs.GetDefault
 
