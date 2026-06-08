@@ -72,7 +72,6 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Math.Distributions
 Imports MZKitWin32.Blender.CommonLibs
 Imports HeatMapParameters = Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap.HeatMapParameters
-Imports Image = System.Drawing.Image
 
 Public Class SingleIonMSIBlender : Inherits MSImagingBlender
 
@@ -115,7 +114,7 @@ Public Class SingleIonMSIBlender : Inherits MSImagingBlender
         Me.range = intensity.Range
     End Sub
 
-    Public Overrides Function Rendering(args As PlotProperty, target As Size) As Image
+    Public Overrides Function Rendering(args As PlotProperty, target As Size) As Microsoft.VisualBasic.Imaging.Image
         Dim pixels As PixelData() = TakePixels(layer.MSILayer)
         ' denoise_scale() > TrIQ_scale(0.8) > knn_scale() > soften_scale()
         Dim filter As RasterPipeline = Me.filters
@@ -138,10 +137,10 @@ Public Class SingleIonMSIBlender : Inherits MSImagingBlender
         End If
 
         Dim background As Image = If(params.showTotalIonOverlap, TIC, Nothing)
-        Dim drawer As New PixelRender(heatmapRender:=False, overlaps:=background.CTypeFromGdiImage)
+        Dim drawer As New PixelRender(heatmapRender:=False, overlaps:=background)
         Dim heatmap As New HeatMapParameters(params.colors, params.mapLevels)
         ' generates image in size dimensionSize
-        Dim image As Image = drawer.RenderPixels(
+        Dim image As System.Drawing.Image = drawer.RenderPixels(
             pixels:=MsImaging.Drawer.GetPixelsMatrix(pixelFilter),
             dimension:=dimensionSize,
             heatmap:=heatmap
@@ -149,13 +148,13 @@ Public Class SingleIonMSIBlender : Inherits MSImagingBlender
 
         image = DrawOutlines(image)
         ' upscale size of the ms-image
-        image = New HeatMap.RasterScaler(image.CTypeFromGdiImage).Scale(hqx:=params.Hqx).CTypeGdiImage
+        Dim skiaImage = New HeatMap.RasterScaler(image.CTypeFromGdiImage).Scale(hqx:=params.Hqx)
 
         If params.showPhysicalRuler Then
-            Call New Ruler(args.GetTheme).DrawOnImage(image.CTypeFromGdiImage, dimensionSize, Color.White, params.resolution)
+            Call New Ruler(args.GetTheme).DrawOnImage(skiaImage, dimensionSize, Color.White, params.resolution)
         End If
 
-        Return image
+        Return skiaImage
     End Function
 
     Public Overrides Sub SetIntensityRange(normRange As DoubleRange)

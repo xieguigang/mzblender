@@ -65,7 +65,6 @@ Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports MZKitWin32.Blender.CommonLibs
-Imports Image = System.Drawing.Image
 
 Public Class HeatMapBlender : Inherits MSImagingBlender
 
@@ -83,20 +82,22 @@ Public Class HeatMapBlender : Inherits MSImagingBlender
 
     End Sub
 
-    Public Overrides Function Rendering(args As PlotProperty, target As Size) As Image
+    Public Overrides Function Rendering(args As PlotProperty, target As Size) As Microsoft.VisualBasic.Imaging.Image
         Dim blender As New HeatMap.PixelRender(params.colors.Description, params.mapLevels, defaultColor:=params.background)
-        Dim img As Image = blender.RenderRasterImage(layer, dimension, fillRect:=True).CTypeGdiImage
+        Dim img As System.Drawing.Image = blender.RenderRasterImage(layer, dimension, fillRect:=True).CTypeGdiImage
 
         img = DrawOutlines(img)
 
+        Dim skiaImg As New Interop.GDIPlusImage(img)
+
         If params.showPhysicalRuler Then
-            Call New Ruler(args.GetTheme).DrawOnImage(img.CTypeFromGdiImage, dimension, Color.White, params.resolution)
+            Call New Ruler(args.GetTheme).DrawOnImage(skiaImg, dimension, Color.White, params.resolution)
         End If
 
-        Return img
+        Return skiaImg
     End Function
 
     Public Overrides Function GetTrIQIntensity(q As Double) As Double
-
+        Return 0
     End Function
 End Class

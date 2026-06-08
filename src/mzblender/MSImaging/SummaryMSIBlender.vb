@@ -165,18 +165,20 @@ Public Class SummaryMSIBlender : Inherits MSImagingBlender
         End If
     End Function
 
-    Public Overrides Function Rendering(args As PlotProperty, target As Size) As Image
+    Public Overrides Function Rendering(args As PlotProperty, target As Size) As Microsoft.VisualBasic.Imaging.Image
         Dim image As Image = Rendering()
 
         If params.Hqx > hqx.HqxScales.None Then
             image = New RasterScaler(image:=image.CTypeFromGdiImage).Scale(hqx:=params.Hqx).CTypeGdiImage
         End If
 
+        Dim skiaImage As New Interop.GDIPlusImage(image)
+
         If params.showPhysicalRuler Then
-            Call New Ruler(args.GetTheme).DrawOnImage(image.CTypeFromGdiImage, dimensions, Color.White, params.resolution)
+            Call New Ruler(args.GetTheme).DrawOnImage(skiaImage, dimensions, Color.White, params.resolution)
         End If
 
-        Return image
+        Return skiaImage
     End Function
 
     ''' <summary>

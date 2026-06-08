@@ -90,7 +90,7 @@ Public MustInherit Class MSImagingBlender : Inherits Blender
         Me.filters = filters
     End Sub
 
-    Protected Function DrawOutlines(image As Image) As Image
+    Protected Function DrawOutlines(image As System.Drawing.Image) As System.Drawing.Image
         Dim line_width As Single = 1
         Dim showOutline As Boolean = False
 
@@ -151,7 +151,7 @@ Public MustInherit Class MSImagingBlender : Inherits Blender
         End If
     End Function
 
-    Public Overloads Function Rendering(args As PlotProperty, target As Size, params As MsImageProperty, sample As String) As Image
+    Public Overloads Function Rendering(args As PlotProperty, target As Size, params As MsImageProperty, sample As String) As Microsoft.VisualBasic.Imaging.Image
         Me.sample_tag = sample
         Me.params = params
 

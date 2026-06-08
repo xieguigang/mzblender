@@ -165,7 +165,7 @@ Public Module Program
                     Try
                         Dim pixels = MSI.LoadPixels({mz}, Tolerance.DeltaMass(0.3)).ToArray
                         Dim blender As New SingleIonMSIBlender(pixels, filters:=Nothing, params)
-                        Dim image As Image = blender.Rendering(New PlotProperty, canvasSize)
+                        Dim image As Microsoft.VisualBasic.Imaging.Image = blender.Rendering(New PlotProperty, canvasSize)
 
                         Call VBDebugger.EchoLine(id)
                         Call image.SaveAs($"{output}/{id}.png")

@@ -1,61 +1,61 @@
 ﻿#Region "Microsoft.VisualBasic::0059c601a6860d7480e0e0852600b176, mzkit\mzblender\MSIRender\Service.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 272
-    '    Code Lines: 204 (75.00%)
-    ' Comment Lines: 23 (8.46%)
-    '    - Xml Docs: 17.39%
-    ' 
-    '   Blank Lines: 45 (16.54%)
-    '     File Size: 12.04 KB
+' Summaries:
 
 
-    ' Class Service
-    ' 
-    '     Constructor: (+2 Overloads) Sub New
-    ' 
-    '     Function: CreateHandler, GetMappedChannel, GetTrIQIntensity, MSIRender, OpenSession
-    '               Run, SetFilters, SetHEmap, SetIntensityRange, Shutdown
-    ' 
-    '     Sub: (+2 Overloads) Dispose
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 272
+'    Code Lines: 204 (75.00%)
+' Comment Lines: 23 (8.46%)
+'    - Xml Docs: 17.39%
+' 
+'   Blank Lines: 45 (16.54%)
+'     File Size: 12.04 KB
+
+
+' Class Service
+' 
+'     Constructor: (+2 Overloads) Sub New
+' 
+'     Function: CreateHandler, GetMappedChannel, GetTrIQIntensity, MSIRender, OpenSession
+'               Run, SetFilters, SetHEmap, SetIntensityRange, Shutdown
+' 
+'     Sub: (+2 Overloads) Dispose
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -75,6 +75,7 @@ Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Unit
 Imports Microsoft.VisualBasic.Data.IO
 Imports Microsoft.VisualBasic.Drawing
+Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Math2D.MarchingSquares
 Imports Microsoft.VisualBasic.Parallel
 Imports Microsoft.VisualBasic.Scripting.Runtime
@@ -230,7 +231,7 @@ Public Class Service : Implements IDisposable
                 End If
 
                 TIC = pixels
-                TICImage = SummaryMSIBlender.Rendering(TIC, dims, "gray", 60, "transparent")
+                TICImage = New Interop.GDIPlusImage(SummaryMSIBlender.Rendering(TIC, dims, "gray", 60, "transparent"))
                 blender = New SummaryMSIBlender(pixels, filters) With {
                     .filters = filters,
                     .sample_outline = sample_outlines
@@ -286,10 +287,10 @@ Public Class Service : Implements IDisposable
         RunSlavePipeline.SendMessage(json!canvas)
         RunSlavePipeline.SendMessage(json!sample)
 
-        Dim msi As Image = blender.Rendering(args, canvas, params, sample)
+        Dim msi As Microsoft.VisualBasic.Imaging.Image = blender.Rendering(args, canvas, params, sample)
 
         Using ms As New MemoryStream
-            Call msi.Save(ms, ImageFormat.Png)
+            Call msi.Save(ms, ImageFormats.Png)
             Call ms.Flush()
             Call RunSlavePipeline.SendMessage($"MSI: w{msi.Width};h{msi.Height};{StringFormats.Lanudry(ms.Length)}")
             Call channel.WriteBuffer(ms.ToArray)

@@ -65,11 +65,11 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.Blender.Scaler
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Drawing
+Imports Microsoft.VisualBasic.Drawing.Interop
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Linq
 Imports MZKitWin32.Blender.CommonLibs
-Imports Image = System.Drawing.Image
 
 Public Class RGBIonMSIBlender : Inherits MSImagingBlender
 
@@ -100,7 +100,7 @@ Public Class RGBIonMSIBlender : Inherits MSImagingBlender
         Return c Is Nothing OrElse c.MSILayer.IsNullOrEmpty
     End Function
 
-    Public Overrides Function Rendering(args As PlotProperty, target As Size) As Image
+    Public Overrides Function Rendering(args As PlotProperty, target As Size) As Microsoft.VisualBasic.Imaging.Image
         Dim drawer As New PixelRender(heatmapRender:=False)
         Dim dimensionSize As New Size(params.scan_x, params.scan_y)
         Dim r As New SingleIonLayer With {.DimensionSize = dimensions, .MSILayer = TakePixels(Me.R)}
@@ -119,21 +119,22 @@ Public Class RGBIonMSIBlender : Inherits MSImagingBlender
         'Dim qg As Double = q1.ThresholdValue(g.Select(Function(p) p.intensity).ToArray)
         'Dim qb As Double = q1.ThresholdValue(b.Select(Function(p) p.intensity).ToArray)
         'Dim cutoff = (New DoubleRange(0, qr), New DoubleRange(0, qg), New DoubleRange(0, qb))
-        Dim image As Image = drawer.ChannelCompositions(
+        Dim image As System.Drawing.Image = drawer.ChannelCompositions(
             R:=r.MSILayer, G:=g.MSILayer, B:=b.MSILayer,
             dimension:=dimensionSize,
             background:="transparent"
-        ).AsGDIImage _
-         .CTypeGdiImage
+        ).AsGDIImage.CTypeGdiImage
 
         image = DrawOutlines(image)
-        image = New HeatMap.RasterScaler(image.CTypeFromGdiImage).Scale(hqx:=params.Hqx).CTypeGdiImage
+        image = New HeatMap.RasterScaler(New GDIPlusImage(image)).Scale(hqx:=params.Hqx).CTypeGdiImage
+
+        Dim skiaImg As New Interop.GDIPlusImage(image)
 
         If params.showPhysicalRuler Then
-            Call New Ruler(args.GetTheme).DrawOnImage(image.CTypeFromGdiImage, dimensions, Color.White, params.resolution)
+            Call New Ruler(args.GetTheme).DrawOnImage(skiaImg, dimensions, Color.White, params.resolution)
         End If
 
-        Return image
+        Return skiaImg
     End Function
 
     Public Overrides Sub SetIntensityRange(normRange As DoubleRange)
