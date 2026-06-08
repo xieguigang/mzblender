@@ -9,17 +9,15 @@ Imports Microsoft.VisualBasic.Data.GraphTheory
 Imports Microsoft.VisualBasic.Data.GraphTheory.GridGraph
 Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
-Imports Bitmap = System.Drawing.Bitmap
-Imports Brushes = System.Drawing.Brushes
-Imports DashStyle = System.Drawing.Drawing2D.DashStyle
-Imports Image = System.Drawing.Image
-Imports Pen = System.Drawing.Pen
-Imports SolidBrush = System.Drawing.SolidBrush
+Imports Brushes = Microsoft.VisualBasic.Imaging.Brushes
+Imports DashStyle = Microsoft.VisualBasic.Imaging.DashStyle
+Imports Image = Microsoft.VisualBasic.Imaging.Image
+Imports Pen = Microsoft.VisualBasic.Imaging.Pen
+Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
 Imports Transform = BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology.Transform
 
 Public Class SpatialTile
@@ -497,7 +495,7 @@ Public Class SpatialTile
     Private Sub LoadTissueImageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadTissueImageToolStripMenuItem.Click
         Using file As New OpenFileDialog With {.Filter = "Raster Image(*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp"}
             If file.ShowDialog = DialogResult.OK Then
-                Me.BackgroundImage = file.FileName.LoadImage
+                Me.BackgroundImage = file.FileName.LoadImage.CTypeGdiImage
                 Me.Refresh()
 
                 imageLoad = file.FileName.LoadImage
@@ -593,10 +591,10 @@ Public Class SpatialTile
             '    height:=clientRect.Height - 2 * DrawOffset
             ')
 
-            Using bmp = New Bitmap(c.Width, c.Height, g.Graphics)
+            Using bmp = New System.Drawing.Bitmap(c.Width, c.Height, g.Graphics)
                 c.DrawToBitmap(bmp, clientRect)
                 g.TranslateTransform(c.Left - Left, c.Top - Top - DrawOffset)
-                bmp.AdjustContrast(m_contrast)
+                ' bmp.AdjustContrast(m_contrast)
                 g.DrawImageUnscaled(bmp, Point.Empty)
                 g.TranslateTransform(Left - c.Left, Top - c.Top - DrawOffset)
             End Using
@@ -613,7 +611,7 @@ Public Class SpatialTile
         Dim g As Graphics2D
 
         If imageLoad IsNot Nothing Then
-            g = New Graphics2D(New Bitmap(imageLoad))
+            g = New Graphics2D(imageLoad.CTypeGdiImage)
         Else
             g = Me.Size.CreateGDIDevice
         End If
@@ -656,7 +654,7 @@ Public Class SpatialTile
 
         g.Flush()
 
-        Me.BackgroundImage = g.ImageResource
+        Me.BackgroundImage = g.CTypeGdiImage
         Me.Visible = True
 
         g.Dispose()

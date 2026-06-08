@@ -67,7 +67,7 @@ Public Class HEStainViewer
     Private Sub RenderMSI()
         Dim heatmap As New Blender.PixelRender(False)
         Dim args As New HeatMapParameters(ScalerPalette.turbo) With {.alpha = 80}
-        Dim msi As Image = heatmap.RenderPixels(MSIMatrix, MSIDims, New HeatMapBrushes(args)).AsGDIImage
+        Dim msi As Image = heatmap.RenderPixels(MSIMatrix, MSIDims, New HeatMapBrushes(args)).AsGDIImage.CTypeGdiImage
 
         MSIBitmap = msi
     End Sub
@@ -111,7 +111,7 @@ Public Class HEStainViewer
             Dim destRect As New Rectangle(physicalCenterX, physicalCenterY, physicalNewWidth, physicalNewHeight)
 
             ' 绘制图像（使用源矩形和目标矩形确保保持宽高比）
-            gfx.DrawImage(MSIBitmap, physicalCenterX, physicalCenterY, physicalNewWidth, physicalNewHeight)
+            gfx.DrawImage(New Interop.GDIPlusImage(MSIBitmap), physicalCenterX, physicalCenterY, physicalNewWidth, physicalNewHeight)
         End Using
 
         BackgroundImage = bg
