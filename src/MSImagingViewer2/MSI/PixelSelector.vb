@@ -74,10 +74,15 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Runtime.CompilerServices
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology
+Imports Erica.Analysis.SpatialTissue.Imaging
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Mzkit_win32.MSImagingViewerV2.PolygonEditor
-Imports SMRUCC.genomics.Analysis.Spatial.Imaging
+Imports Bitmap = System.Drawing.Bitmap
+Imports Brushes = System.Drawing.Brushes
+Imports Image = System.Drawing.Image
+Imports Pen = System.Drawing.Pen
+Imports SolidBrush = System.Drawing.SolidBrush
 Imports std = System.Math
 
 <Assembly: InternalsVisibleTo("mzkit_win32")>
