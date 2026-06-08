@@ -49,6 +49,11 @@
     <StartupObject>Mzkit_win32.MSImagingViewerV2.My.MyApplication</StartupObject>
     <ImportedNamespaces>System.Windows.Forms=False,System.Xml=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,MSImagingViewerV2=True</ImportedNamespaces>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\Erica\src\STImaging\STImaging.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\galaxy\src\GalaxyChartLibs\GalaxyChartLibs.vbproj" />
@@ -61,6 +66,7 @@
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
     <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\text%html\html_netcore5.vbproj" />
     <ProjectReference Include="..\..\..\..\mzmath\ms2_math-core\mzmath-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\mzmath\SpatialMath\SpatialMath.vbproj" />
     <ProjectReference Include="..\..\..\..\visualize\MsImaging\MsImaging.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\visualize\TissueMorphology\TissueMorphology.vbproj" />
   </ItemGroup>

@@ -93,7 +93,7 @@ Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology.HEMap
 Imports BioNovoGene.Analytical.MassSpectrometry.SingleCells.Deconvolute
 Imports Darwinism.HPC.Parallel
 Imports Darwinism.IPC.Networking.Protocols.Reflection
-Imports HEView
+Imports Erica.Analysis.SpatialTissue.HEView
 Imports Microsoft.VisualBasic.CommandLine.InteropService.Pipeline
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model

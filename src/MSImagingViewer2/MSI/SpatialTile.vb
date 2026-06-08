@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology
+Imports Erica.Analysis.SpatialTissue.Imaging
 Imports Galaxy.Workbench
 Imports Galaxy.Workbench.CommonDialogs
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
@@ -14,7 +14,12 @@ Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
-Imports SMRUCC.genomics.Analysis.Spatial.Imaging
+Imports Bitmap = System.Drawing.Bitmap
+Imports Brushes = System.Drawing.Brushes
+Imports DashStyle = System.Drawing.Drawing2D.DashStyle
+Imports Image = System.Drawing.Image
+Imports Pen = System.Drawing.Pen
+Imports SolidBrush = System.Drawing.SolidBrush
 Imports Transform = BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology.Transform
 
 Public Class SpatialTile

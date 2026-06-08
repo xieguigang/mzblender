@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports Microsoft.VisualBasic.Imaging
+Imports DashStyle = System.Drawing.Drawing2D.DashStyle
+Imports Pen = System.Drawing.Pen
 
 Namespace PolygonEditor
 

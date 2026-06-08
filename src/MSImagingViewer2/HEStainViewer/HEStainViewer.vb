@@ -10,6 +10,10 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.HeatMap
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports std = System.Math
+Imports DashStyle = System.Drawing.Drawing2D.DashStyle
+Imports Pen = System.Drawing.Pen
+Imports Bitmap = System.Drawing.Bitmap
+Imports Image = System.Drawing.Image
 
 Public Class HEStainViewer
 
@@ -48,6 +52,8 @@ Public Class HEStainViewer
         Call ResetRegister()
         Call RenderMSI()
         Call RefreshUI()
+
+        Return Nothing
     End Function
 
     Private Sub ResetRegister()
