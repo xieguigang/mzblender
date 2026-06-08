@@ -75,13 +75,17 @@ Imports System.Drawing.Drawing2D
 Imports System.Runtime.CompilerServices
 Imports BioNovoGene.Analytical.MassSpectrometry.MsImaging.TissueMorphology
 Imports Erica.Analysis.SpatialTissue.Imaging
+Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Mzkit_win32.MSImagingViewerV2.PolygonEditor
 Imports Bitmap = System.Drawing.Bitmap
+Imports Brush = System.Drawing.Brush
 Imports Brushes = System.Drawing.Brushes
+Imports Font = System.Drawing.Font
 Imports Image = System.Drawing.Image
 Imports Pen = System.Drawing.Pen
+Imports Pens = System.Drawing.Pens
 Imports SolidBrush = System.Drawing.SolidBrush
 Imports std = System.Math
 
@@ -875,8 +879,8 @@ Public Class PixelSelector
 
         Dim g = e.Graphics
         Dim radius As Single = EditorConfigs.point_size
-        Dim pointColor As Brush = EditorConfigs.point_color.GetBrush
-        Dim lineColor As Brush = EditorConfigs.line_color.GetBrush
+        Dim pointColor As Brush = EditorConfigs.point_color.GetBrush.CTypeBrushObject
+        Dim lineColor As Brush = EditorConfigs.line_color.GetBrush.CTypeBrushObject
         Dim lineStyle As Pen = EditorConfigs.GetLinePen
 
         For Each polygon As Polygon In polygons
