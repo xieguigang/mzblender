@@ -28,7 +28,7 @@ Friend Class KP_DrawEngine : Implements IDisposable
             width = 0
             height = 0
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -61,7 +61,7 @@ Friend Class KP_DrawEngine : Implements IDisposable
 
             Return True
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
             Return False
         End Try
     End Function
@@ -72,7 +72,7 @@ Friend Class KP_DrawEngine : Implements IDisposable
                 g.DrawImage(memoryBitmap, New Rectangle(0, 0, width, height), 0, 0, width, height, GraphicsUnit.Pixel)
             End If
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
         End Try
     End Sub
 
@@ -80,7 +80,7 @@ Friend Class KP_DrawEngine : Implements IDisposable
         Try
             Return graphics IsNot Nothing
         Catch ex As Exception
-            Windows.Forms.MessageBox.Show("ImageViewer error: " & ex.ToString())
+            MessageBox.Show("ImageViewer error: " & ex.ToString())
             Return False
         End Try
     End Function
