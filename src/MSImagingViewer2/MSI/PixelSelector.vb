@@ -1337,7 +1337,7 @@ Public Class PixelSelector
         If Not tissue_layer Is Nothing Then
             Dim g As Graphics = Graphics.FromImage(image)
 
-            g.InterpolationMode = InterpolationMode.HighQualityBilinear
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear
             g.CompositingQuality = CompositingQuality.HighQuality
 
             Call g.DrawImage(tissue_layer, 0, 0, image.Width, image.Height)
